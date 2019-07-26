@@ -4,8 +4,9 @@
     },
     "option_gameguid": "b8b7217b-4036-4713-8651-b9447d77e8aa",
     "option_game_speed": 60,
-    "option_lastchanged": "26 July 2019 12:38:53",
-    "option_sci_usesci": true
+    "option_lastchanged": "26 July 2019 17:16:36",
+    "option_sci_usesci": true,
+    "option_author": "Nathan_Nino"
 }←1225f6b0-ac20-43bd-a82e-be73fa0b6f4f|{
     "targets": 461609314234257646
 }←7b2c4976-1e09-44e5-8256-c527145e03bb|{
