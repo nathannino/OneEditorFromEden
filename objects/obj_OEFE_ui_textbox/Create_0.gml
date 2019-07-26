@@ -1,0 +1,3 @@
+/// @description Initialize stuff
+
+input = "";
