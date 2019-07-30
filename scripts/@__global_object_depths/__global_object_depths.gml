@@ -4,12 +4,12 @@
 gml_pragma( "global", "__global_object_depths()");
 
 // insert the generated arrays here
-global.__objectDepths[0] = 0; // ElementObj
-global.__objectDepths[1] = 0; // TestxmlObj
+global.__objectDepths[0] = 0; // objDerpXmlRead
+global.__objectDepths[1] = 0; // objDerpXmlWrite
 
 
-global.__objectNames[0] = "ElementObj";
-global.__objectNames[1] = "TestxmlObj";
+global.__objectNames[0] = "objDerpXmlRead";
+global.__objectNames[1] = "objDerpXmlWrite";
 
 
 // create another array that has the correct entries
