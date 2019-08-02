@@ -1,6 +1,6 @@
 
 {
-    "name": "room0",
+    "name": "rm_TextboxTest",
     "id": "5a95ac1e-18f6-4f01-a575-19f06f607186",
     "creationCodeFile": "",
     "inheritCode": false,
