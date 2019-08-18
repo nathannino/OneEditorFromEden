@@ -1,0 +1,1 @@
+TextToDraw = "Enter the folder path : (example : ../OSFEsource)";

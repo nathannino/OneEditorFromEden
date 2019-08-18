@@ -1,6 +1,13 @@
 /// @description Handle the keyboard
 // You can write your code in this editor
 
+//show message
+if !(ShownTextboxInitMessage) {
+	show_debug_message(TextboxName + " has finished initialising and is doing it's first step event")
+	ShownTextboxInitMessage = true;
+}
+
+
 if (IsSelected) { //If this is the current textbox and we **pressed** a key
 	
 	var Length = string_length(input);
@@ -39,6 +46,37 @@ if (IsSelected) { //If this is the current textbox and we **pressed** a key
 			IsSelected = false;
 			show_debug_message(TextboxName + " (" + string(self) + ") has been unselected")
 		}
+	} else if (keyboard_check_pressed(ord("V")) && keyboard_check(vk_control)) {
+		if (clipboard_has_text()) {
+			var PastedString = clipboard_get_text();
+			var PastedStringLength = string_length(PastedString);
+			
+			//put it in input
+			input = string_insert(PastedString,input,CursorStringPosition + 1);
+			
+			//put it in output (Taken from user event 10, so will break if it does
+			for (var i = 0;i < PastedStringLength;i++) {
+				
+				if (i != 0) {
+					var CurrentChar = string_delete(PastedString,1,i);
+				} else {
+					var CurrentChar = PastedString;
+				}
+				CurrentChar = string_delete(CurrentChar,2,string_length(CurrentChar) -1);
+				
+				//taken and adapted from step event
+				var newLetter = instance_create_depth(CursorXPosition, CursorYPosition, self.depth - 1, obj_ATB_TextRenderer_Letter);
+				newLetter.Letter = CurrentChar;
+				newLetter.ParentTextbox = self;
+				newLetter.image_xscale = string_width(CurrentChar);
+				ds_list_insert(output,CursorStringPosition,newLetter);
+				
+				//update cursor
+				CursorXPosition = newLetter.x + newLetter.image_xscale;
+				CursorStringPosition +=1;
+			}
+	
+		} //else, do nothing
 	} else if (keyboard_check(vk_alt)) {
 		//do nothing
 	} else if (keyboard_check(vk_control)) {
@@ -101,6 +139,37 @@ if (IsSelected) { //If this is the current textbox and we **pressed** a key
 	if (keyboard_lastchar != "") {
 		show_debug_message("Updated textbox " + TextboxName + " (" + string(self) + "). Now is : " + input); //debug string
 	}
+	
+	var SetPositionBack = false;
+	//Do we have to move the origin point
+	if (cursor.x > (x + image_xscale)) {
+		Difference = ((x + image_xscale) - cursor.x) - 32;
+		OriginPoint.x += Difference;
+		SetPositionBack = true;
+	} else if (cursor.x < x) {
+		Difference = (x - cursor.x) + 32; //plus is just there to make it more fun
+		OriginPoint.x += Difference;
+		if (OriginPoint.x > x) {
+			OriginPoint.x = x;
+		}
+		SetPositionBack = true;
+	}
+	
+	//Move everything to OriginPoint
+	var OutputLenght6 = ds_list_size(output);
+	for (var i = 0; i < OutputLenght6; i++) {
+		var LetterToModify6 = ds_list_find_value(output,i);
+		
+		if (i != 0) {
+			LetterToModify6.x = (ds_list_find_value(output,i - 1).x + ds_list_find_value(output,i - 1).image_xscale);
+		} else {
+			LetterToModify6.x = OriginPoint.x;
+			LetterToModify6.y = OriginPoint.y;
+		}
+	}
+	
+	
+	
 	//update cursor even more
 	if (CursorStringPosition != 0) {
 		CursorXPosition = ds_list_find_value(output,CursorStringPosition - 1).x + ds_list_find_value(output,CursorStringPosition - 1).image_xscale;
@@ -113,5 +182,7 @@ if (IsSelected) { //If this is the current textbox and we **pressed** a key
 	}
 	cursor.x = CursorXPosition;
 	cursor.y = CursorYPosition;
+	
+
 
 }

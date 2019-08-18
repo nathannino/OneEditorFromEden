@@ -7,6 +7,6 @@ if ( ((x <= mouse_x) && (mouse_x <= (x+image_xscale)) ) && (y <= mouse_y) && (mo
 	show_debug_message(TextboxName + " (" + string(self) + ") is the currently selected textbox");
 } else if (IsSelected) { //Unselect it
 	IsSelected = false;
-	cursor.IsSelected = true;
+	cursor.IsSelected = false; //I can't believe I forgot to change it to false
 	show_debug_message(TextboxName + " (" + string(self) + ") has been unselected")
 }

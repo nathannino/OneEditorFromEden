@@ -29,3 +29,4 @@ KeyboardTimeoutStarted = false;
 OriginPoint = instance_create_depth(x,y,self.depth - 1,obj_ATB_TextRenderer_Origin);
 OriginPoint.ParentTextbox = self;
 
+ShownTextboxInitMessage = false;

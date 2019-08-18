@@ -1,0 +1,1 @@
+TextToDraw = "   Or write the path to a folder containing the new addon"
