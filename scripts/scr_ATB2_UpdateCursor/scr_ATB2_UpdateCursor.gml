@@ -7,6 +7,7 @@
 	//Actual Code
 	while (CursorLoop) {
 		var CursorLoopLineLenght = string_length(ds_list_find_value(output,CursorLoopNumber));
+		//show_debug_message(ds_list_find_value(output,CursorLoopNumber)); //debug code
 		if (CursorLoopLineLenght < RemainingChar) { //Wrong line
 			RemainingChar -= CursorLoopLineLenght;
 			CursorLoopNumber += 1;

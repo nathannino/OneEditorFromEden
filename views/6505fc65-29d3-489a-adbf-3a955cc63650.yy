@@ -4,9 +4,8 @@
     "mvc": "1.1",
     "name": "6505fc65-29d3-489a-adbf-3a955cc63650",
     "children": [
-        "97a63907-9752-4cbb-a880-af197a7702cc",
-        "94a929ab-b5a9-42a4-8b45-58368902d251",
-        "479cf3ab-91de-49dc-9804-c4666b7f101b"
+        "e30f8f66-11fc-4c37-b255-2d92aeade2c4",
+        "e9d37b7c-ba1d-4912-ba4f-0b5729a2fca7"
     ],
     "filterType": "GMObject",
     "folderName": "debugtesting",

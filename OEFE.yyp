@@ -1303,6 +1303,14 @@
             }
         },
         {
+            "Key": "e30f8f66-11fc-4c37-b255-2d92aeade2c4",
+            "Value": {
+                "id": "e8ebf68a-0086-47ed-81cc-b5f63ca8ff7a",
+                "resourcePath": "views\\e30f8f66-11fc-4c37-b255-2d92aeade2c4.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "e32623f1-e74d-4c7a-a2e0-204137b8bda4",
             "Value": {
                 "id": "a273fc8f-ab29-4e9f-9268-cfc58cc4671f",
@@ -1340,6 +1348,14 @@
                 "id": "a838eb5e-37f9-46a9-84d1-e664b5cd6357",
                 "resourcePath": "scripts\\DerpXmlWrite_UnloadString\\DerpXmlWrite_UnloadString.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "e9d37b7c-ba1d-4912-ba4f-0b5729a2fca7",
+            "Value": {
+                "id": "3a869db3-9cfe-45f5-bd8f-1c107fd34aee",
+                "resourcePath": "views\\e9d37b7c-ba1d-4912-ba4f-0b5729a2fca7.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -1468,6 +1484,14 @@
                 "id": "2f9a8944-b2b0-4f22-a33f-80eb0bf67e01",
                 "resourcePath": "fonts\\fnt_OEFE_Arial_15\\fnt_OEFE_Arial_15.yy",
                 "resourceType": "GMFont"
+            }
+        },
+        {
+            "Key": "fb727d1b-f1af-42e7-83fa-d13c480ed6c9",
+            "Value": {
+                "id": "8420d862-caa4-4dfc-b2ed-f6a1c4c40f73",
+                "resourcePath": "objects\\obj_ATB2_debugtesting\\obj_ATB2_debugtesting.yy",
+                "resourceType": "GMObject"
             }
         },
         {

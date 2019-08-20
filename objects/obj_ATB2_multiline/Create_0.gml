@@ -6,10 +6,11 @@ input = ""; //The raw text input
 //image_xscale //the witdh of the textbox
 LineNumber = 1// The height of the textbox (Line number * 32)
 TextboxName = "\"Unnamed textbox\""
-HeightPerLine = 32;
+HeightPerLine = 18;
 // How many should it move by
 OriginPointXMoving = 32; //random number... change this hard coded number to make it feel better
 OriginPointYMoving = HeightPerLine; //Same thing as above, except for vertical movement;
+UseNewLines = true;
 
 
 //For the textbox only
