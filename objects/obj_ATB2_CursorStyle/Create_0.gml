@@ -2,3 +2,4 @@
 
 image_yscale = 18;
 ParentTextbox = undefined;
+ParentTextboxErrorShown = false; //just to not spam the screen

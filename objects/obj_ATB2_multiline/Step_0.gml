@@ -1,9 +1,8 @@
 /// @description Main logic n stuff
 
 //This is heavely inspired by ATB
-if (true) {
-//if (IsSelected) {
-	if (keyboard_check_pressed(vk_anykey)) {
+if (IsSelected) {
+	if (keyboard_check_pressed(vk_anykey)) { //just to not chain stuff too fast
 		scr_ATB2_KeyboardTimeoutReset();
 	}
 	

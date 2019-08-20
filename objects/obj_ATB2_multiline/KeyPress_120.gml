@@ -1,7 +1,7 @@
 /// @description debuging the clipboard
 // You can write your code in this editor
 
-if (clipboard_has_text() && true) {
+if (clipboard_has_text() && false) {
 	//var ClipboardText9 = "Hello\nhi"
 	var ClipboardText9 = clipboard_get_text();
 	var ClipboardLength9 = string_length(ClipboardText9);
