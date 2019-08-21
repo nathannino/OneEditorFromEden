@@ -4,6 +4,7 @@
 //Basically, the goal is to read all characters from input
 ds_list_clear(output);
 CursorHeightPosition = 0;
+CursorRelativePosition = 0;
 for (var Tempi = 1; Tempi <= string_length(input);Tempi++) {
 	var TempCurrentChar = string_char_at(input,Tempi);
 	if (TempCurrentChar = "\n") {

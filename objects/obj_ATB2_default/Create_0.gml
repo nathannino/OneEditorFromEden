@@ -1,7 +1,7 @@
 /// @description This textbox should use less memory
 // You can write your code in this editor
 
-//vars to use
+//vars that you can change and that shouldn't break it
 input = ""; //The raw text input
 //image_xscale //the witdh of the textbox
 TextboxName = "\"Unnamed textbox\"" //The name of the textbox given in the console output
@@ -14,8 +14,11 @@ KeyboardTimeout = 40; //Amount of step events before executing an action for the
 KeyboardTimeoutStarted = false; //If the timeout has started or not
 DefaultKeyboardTimeout = 2; //The amount of step events after the 2nd time
 KeyboardTimeoutReset = KeyboardTimeout; //The amount to reset KeyboardTimeout to after releasing the key
+AllowDebugReset = true; //This allows the user to press F6 to reload the cursor
+UsedFont = fnt_ATB_Default; //Do note that changing used font will also require you to change stuff like :
+Cursor_image_yscale = 18; //The height of the cursor (set later in the create event)
 
-//For the textbox only
+//For the textbox only [That means that you could break stuff here]
 CursorXPosition = x; //The x position of the cursor
 CursorYPosition = y; //The y position of the cursor
 CursorStringPosition = 0 //The string position of the cursor
@@ -23,6 +26,7 @@ CursorHeightPosition = 0; //The line it is in
 CursorRelativePosition = 0; //The relative position of the cursor (usefull for stuff like up arrow)
 cursor = instance_create_depth(CursorXPosition,CursorYPosition,self.depth - 3,obj_ATB2_CursorStyle);
 cursor.ParentTextbox = self;
+cursor.image_yscale = Cursor_image_yscale;
 IsSelected = false; //If the textbox is selected
 CanChangeSelected = true; //Change if the current textbox can decide to change or not
 // obj_ATB2_SelectableManager.CanChangeSelected //If the textbox can be selected

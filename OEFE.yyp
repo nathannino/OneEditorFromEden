@@ -263,6 +263,14 @@
             }
         },
         {
+            "Key": "35794e1c-0cfb-49d7-8fcf-3a5c3670f72a",
+            "Value": {
+                "id": "19af935a-ad42-4c66-881e-18313ec0ffc4",
+                "resourcePath": "views\\35794e1c-0cfb-49d7-8fcf-3a5c3670f72a.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "35a82e1a-c408-469c-8e2f-99b83c863797",
             "Value": {
                 "id": "27d641d8-7575-4108-911f-2d7d52e66c6f",
@@ -380,14 +388,6 @@
                 "id": "d7bb4740-037f-441a-8459-3a9c8901bb6f",
                 "resourcePath": "notes\\compatibility_report_300719_1830143014.yy",
                 "resourceType": "GMNotes"
-            }
-        },
-        {
-            "Key": "45e8200b-b434-459a-9130-a97894c9674b",
-            "Value": {
-                "id": "5118fe5a-74cc-4cf1-b1ee-fb8cf5d9b729",
-                "resourcePath": "objects\\obj_ATB2_SelectableManager\\obj_ATB2_SelectableManager.yy",
-                "resourceType": "GMObject"
             }
         },
         {
@@ -578,7 +578,7 @@
             "Key": "6627e3ee-8096-4290-bede-68466546b8b5",
             "Value": {
                 "id": "28e5a348-180c-46c0-9a79-cadc1e187aa4",
-                "resourcePath": "objects\\obj_ATB2_multiline\\obj_ATB2_multiline.yy",
+                "resourcePath": "objects\\obj_ATB2_default\\obj_ATB2_default.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -919,6 +919,14 @@
             }
         },
         {
+            "Key": "9f374171-6e20-4fe8-a010-2e732b656870",
+            "Value": {
+                "id": "de4543fc-682b-4567-9806-2e7ef102667e",
+                "resourcePath": "views\\9f374171-6e20-4fe8-a010-2e732b656870.yy",
+                "resourceType": "GMFolder"
+            }
+        },
+        {
             "Key": "9f9fc1fc-76c0-4c41-967d-45c7e3d71ecc",
             "Value": {
                 "id": "beffa88e-d960-447d-83be-ab70dcf86cc6",
@@ -959,14 +967,6 @@
             }
         },
         {
-            "Key": "a7f49fad-1d61-4c45-8b1c-e76583a84357",
-            "Value": {
-                "id": "167c7f7a-d9b1-4777-81f6-872d45316411",
-                "resourcePath": "views\\a7f49fad-1d61-4c45-8b1c-e76583a84357.yy",
-                "resourceType": "GMFolder"
-            }
-        },
-        {
             "Key": "a8dc4316-c364-4fc7-a9e6-c622bc894835",
             "Value": {
                 "id": "87705cf7-4b16-428d-b8eb-1bbd5d02bdaa",
@@ -988,6 +988,14 @@
                 "id": "932c07a6-07bb-4d99-9a8f-ce1659cb2081",
                 "resourcePath": "sprites\\spr_OnePixel_black\\spr_OnePixel_black.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "a9f075ac-84cc-41f6-8df5-57281bc983ae",
+            "Value": {
+                "id": "775933d9-57db-4107-bdec-9d0b7efaaf5d",
+                "resourcePath": "views\\a9f075ac-84cc-41f6-8df5-57281bc983ae.yy",
+                "resourceType": "GMFolder"
             }
         },
         {
@@ -1528,6 +1536,11 @@
         }
     ],
     "script_order": [
+        "92638dde-3110-44b3-9f98-ce46388b9fe5",
+        "b2a1ef03-8412-41a4-9a93-2abe4d32a372",
+        "3ddb6800-1aa7-4504-9574-41359fab92d1",
+        "35a82e1a-c408-469c-8e2f-99b83c863797",
+        "7ee55d65-1d02-41c9-82b8-122a01fc03ed",
         "b1c3d9ad-7f93-4e0c-9a8b-49e05831a612",
         "13bcac59-f73c-4a1c-9b91-dd4eaf34b0d8",
         "d25c0e21-629e-429e-8dd8-709eca7a8218",
@@ -1555,12 +1568,7 @@
         "52ffea39-7f80-4123-97b7-b60d6b6362cc",
         "a442f2f4-ddcf-4b04-9620-8040e658895d",
         "7f830a1b-ee3f-4794-ba69-0f7dd346d2e4",
-        "5b18c7ab-ed63-45ea-a05a-9d646eac6e06",
-        "92638dde-3110-44b3-9f98-ce46388b9fe5",
-        "b2a1ef03-8412-41a4-9a93-2abe4d32a372",
-        "3ddb6800-1aa7-4504-9574-41359fab92d1",
-        "35a82e1a-c408-469c-8e2f-99b83c863797",
-        "7ee55d65-1d02-41c9-82b8-122a01fc03ed"
+        "5b18c7ab-ed63-45ea-a05a-9d646eac6e06"
     ],
     "tutorial": ""
 }

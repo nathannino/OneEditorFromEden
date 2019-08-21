@@ -1,6 +1,6 @@
 /// @description Main logic n stuff
 
-//This is heavely inspired by ATB
+//This is heavely inspired by ATB, but also way better than ATB [Also, ATB wasn't even released, so...]
 if (IsSelected) {
 	if (keyboard_check_pressed(vk_anykey)) { //just to not chain stuff too fast
 		scr_ATB2_KeyboardTimeoutReset();
@@ -14,7 +14,7 @@ if (IsSelected) {
 			if (ErasedChar == "\n") {
 				ds_list_delete(output,CursorHeightPosition);
 				CursorHeightPosition -= 1;
-				ds_list_replace(output,CursorHeightPosition,ds_list_find_value(output,CursorHeightPosition) + string_delete(TempVarDeleteString,CursorRelativePosition + 1,1))
+				ds_list_replace(output,CursorHeightPosition,ds_list_find_value(output,CursorHeightPosition) + string_delete(TempVarDeleteString,CursorRelativePosition,1))
 			} else {
 				ds_list_replace(output,CursorHeightPosition,string_delete(TempVarDeleteString,CursorRelativePosition,1));
 			}
@@ -42,6 +42,10 @@ if (IsSelected) {
 		}
 	} else if (keyboard_check_released(vk_enter)) {
 		scr_ATB2_KeyboardTimeoutReset();
+	} else if (keyboard_check(vk_control) && keyboard_check_pressed(ord("V"))) { //Paste what is in the pastebin
+		if (clipboard_has_text()) {
+			
+		}
 	} else if (keyboard_check(vk_left)) {
 		if (scr_ATB2_KeyboardTimeoutCheck() && (CursorStringPosition != 0)) {
 			CursorStringPosition -= 1;

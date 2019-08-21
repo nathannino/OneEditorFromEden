@@ -9,7 +9,7 @@ if ((TextSurface == undefined) || (surface_exists(TextSurface))) {
 }
 surface_set_target(TextSurface);
 draw_set_color(c_black);
-draw_set_font(fnt_ATB_Default);
+draw_set_font(UsedFont);
 
 var OriginPointRelativeX = OriginPointX - x;
 var OriginPointRelativeY = OriginPointY - y;

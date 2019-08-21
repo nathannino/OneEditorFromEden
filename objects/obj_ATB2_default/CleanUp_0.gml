@@ -7,3 +7,5 @@ if !((TextSurface == undefined) || (surface_exists(TextSurface))) {
 if (instance_exists(cursor)) {
 	instance_destroy(cursor);
 }
+
+show_debug_message(TextboxName + " has finished it's clean up event");
