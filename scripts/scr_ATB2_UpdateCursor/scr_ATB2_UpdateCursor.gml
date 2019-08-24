@@ -2,16 +2,23 @@
 //Variable land
 	var CursorLoop = true;
 	var CursorLoopNumber = 0;
-	var RemainingChar = CursorStringPosition;
+	var RemainingChar = CursorStringPosition + 1;
 
 	//Actual Code
 	while (CursorLoop) {
 		var CursorLoopLineLenght = string_length(ds_list_find_value(output,CursorLoopNumber));
-		show_debug_message(ds_list_find_value(output,CursorLoopNumber)); //debug code
+		
+		if (ShowCursorDebugCode) {
+			show_debug_message("----------------------------------------------------");
+			show_debug_message("[ATB2_UpdateCursor] Current line is : " + ds_list_find_value(output,CursorLoopNumber)); //debug code
+			show_debug_message("[ATB2_UpdateCursor] Current line length is = " + string(CursorLoopLineLenght));
+			show_debug_message("----------------------------------------------------");
+		}
 		if (CursorLoopLineLenght < RemainingChar) { //Wrong line
 			RemainingChar -= CursorLoopLineLenght;
 			CursorLoopNumber += 1;
 		} else { //Right line
+			var DebugOutputCharAt = string_char_at(ds_list_find_value(output,CursorLoopNumber),RemainingChar);
 			var CursorLoopLine = ds_list_find_value(output,CursorLoopNumber);
 			CursorRelativePosition = RemainingChar;
 			
@@ -24,3 +31,13 @@
 			CursorLoop = false;
 		}
 	}
+	//final debug code
+	if (ShowCursorDebugCode) {
+		show_debug_message("----------------------------------------------------");
+		show_debug_message("[ATB2_UpdateCursor] CursorRelativePosition = " + string(CursorRelativePosition));
+		show_debug_message("[ATB2_UpdateCursor] CursorStringPosition = " + string(CursorStringPosition));
+		show_debug_message("[ATB2_UpdateCursor] Current Character is : " + DebugOutputCharAt);
+		show_debug_message("[ATB2_UpdateCursor] Current CursorHeightPosition = " + string(CursorHeightPosition));
+		show_debug_message("----------------------------------------------------");
+	}
+	scr_ATB2_Debug_ListLines();

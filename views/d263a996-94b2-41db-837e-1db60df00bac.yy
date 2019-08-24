@@ -9,7 +9,7 @@
         "d53251eb-9ed7-43d5-8dae-400caec2572e"
     ],
     "filterType": "GMSprite",
-    "folderName": "OnePixel",
+    "folderName": "OnePixel (Used by ATB2)",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

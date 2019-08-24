@@ -1,8 +1,8 @@
 /// @description This textbox should use less memory
-// You can write your code in this editor
 
 //vars that you can change and that shouldn't break it
 input = ""; //The raw text input
+LastInput = "" //Like input, but used for debug message purpuses
 //image_xscale //the witdh of the textbox
 TextboxName = "\"Unnamed textbox\"" //The name of the textbox given in the console output
 HeightPerLine = 18; //The amount of pixel to move the cursor by new lines
@@ -17,13 +17,16 @@ KeyboardTimeoutReset = KeyboardTimeout; //The amount to reset KeyboardTimeout to
 AllowDebugReset = true; //This allows the user to press F6 to reload the cursor
 UsedFont = fnt_ATB_Default; //Do note that changing used font will also require you to change stuff like :
 Cursor_image_yscale = 18; //The height of the cursor (set later in the create event)
+ShowCursorDebugCode = true; //Print some debug stuff to the console [Also, CursorStringPosition should be 1 lower than CursorRelativePosition in the first line]
+ShowUpDownDebugMessage = false; //Prints some more stuff to the console, revolving around the up and down arrow
+ShowTextUpdateMessage = false; //Prints the raw input text when input gets modified
+ShowOutputDebugMessage = true; //Prints all of output... all of it.
 
 //For the textbox only [That means that you could break stuff here]
 CursorXPosition = x; //The x position of the cursor
 CursorYPosition = y; //The y position of the cursor
 CursorStringPosition = 0 //The string position of the cursor
 CursorHeightPosition = 0; //The line it is in
-CursorRelativePosition = 0; //The relative position of the cursor (usefull for stuff like up arrow)
 cursor = instance_create_depth(CursorXPosition,CursorYPosition,self.depth - 3,obj_ATB2_CursorStyle);
 cursor.ParentTextbox = self;
 cursor.image_yscale = Cursor_image_yscale;
@@ -34,5 +37,6 @@ OriginPointX = x;
 OriginPointY = y;
 output = ds_list_create();
 ds_list_clear(output);
-ds_list_add(output,"");
+ds_list_add(output,"\n"); //this is so that nothing will break =P 
+CursorRelativePosition = 1; //The relative position of the cursor (usefull for stuff like up arrow) [The value 1 is given because of the \n]
 TextSurface = undefined;
