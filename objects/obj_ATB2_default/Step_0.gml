@@ -62,21 +62,51 @@ if (IsSelected) {
 		scr_ATB2_KeyboardTimeoutReset();
 	} else if (keyboard_check(vk_up)) { //move up
 		if (scr_ATB2_KeyboardTimeoutCheck() && (CursorHeightPosition != 0)) {
+			//Let's rework this!
+			/*
+			The way the new rework is gonna work is that we will
+			A) Check the width of the current line
+			B) Check the width of the other line
+			C) Get as close to the same width as possible
+			This will remove some of the confusion, but will be a tiny bit harder to do.
+			*/
+			var CurrentLineString = string_delete(ds_list_find_value(output,CursorHeightPosition),CursorRelativePosition + 1,string_length(ds_list_find_value(output,CursorHeightPosition)));;
 			var OtherLine = CursorHeightPosition-1;
+			var OtherLineString = ds_list_find_value(output,OtherLine);
 			var OtherLineLength = string_length(ds_list_find_value(output,OtherLine));
 			var NewCursorRelativePosition;
-			if (CursorRelativePosition >= OtherLineLength) {
+			//The place of the rework
+			var CurrentLineWidth = string_width(CurrentLineString);
+			var OtherLineWidth = string_width(OtherLineString);
+			if (CurrentLineWidth >= OtherLineWidth) {
 				NewCursorRelativePosition = OtherLineLength;
+				LastWidth = string_width(OtherLineWidth);
+				LastString = OtherLineString;
 			} else {
-				NewCursorRelativePosition = CursorRelativePosition;
+				var CursorTempLoop = true;
+				var CursorTempLoopPosition = 2; //One happens to be the newline. Let's use 2 instead [UPDATE : IT WORKED =O
+				while (CursorTempLoop) {
+					var LastWidth = string_width(string_delete(OtherLineString,CursorTempLoopPosition,string_length(OtherLineString)));
+					var LastString = string_delete(OtherLineString,CursorTempLoopPosition,string_length(OtherLineString));
+					if (LastWidth >= CurrentLineWidth) {
+							NewCursorRelativePosition = CursorTempLoopPosition - 1;
+							CursorTempLoop = false;
+					} else {
+						CursorTempLoopPosition += 1;
+					}
+				}
 			}
 			//Get the specific string
-			var CombinedString = string_delete(ds_list_find_value(output,OtherLine),1,NewCursorRelativePosition + 1) + string_delete(ds_list_find_value(output,CursorHeightPosition),CursorRelativePosition + 1,string_length(ds_list_find_value(output,CursorHeightPosition)));
+			var CombinedString = string_delete(ds_list_find_value(output,OtherLine),1,NewCursorRelativePosition) + string_delete(ds_list_find_value(output,CursorHeightPosition),CursorRelativePosition + 1,string_length(ds_list_find_value(output,CursorHeightPosition)));
 			if (ShowUpDownDebugMessage) {
 				show_debug_message("----------------------------------------------------");
 				show_debug_message("[ATB2 Debug] CombinedString = " + CombinedString);
+				show_debug_message("[ATB2 Debug] CurrentString = " + CurrentLineString);
+				show_debug_message("[ATB2 Debug] CurrentString with cursor = " + LastString);
 				show_debug_message("[ATB2 Debug] CursorRelativePosition = " + string(CursorRelativePosition));
+				show_debug_message("[ATB2 Debug] Current String Width = " + string(CurrentLineWidth));
 				show_debug_message("[ATB2 Debug] NewCursorRelativePosition = " + string(NewCursorRelativePosition));
+				show_debug_message("[ATB2 Debug] New String Width = " + string(LastWidth));
 				show_debug_message("----------------------------------------------------");
 			}
 			CursorStringPosition -= string_length(CombinedString);
@@ -86,21 +116,43 @@ if (IsSelected) {
 		scr_ATB2_KeyboardTimeoutReset();
 	} else if (keyboard_check(vk_down)) { //move down
 		if (scr_ATB2_KeyboardTimeoutCheck() && (ds_list_size(output) - 1 != CursorHeightPosition)) {
+			var CurrentLineString = string_delete(ds_list_find_value(output,CursorHeightPosition),CursorRelativePosition + 1,string_length(ds_list_find_value(output,CursorHeightPosition)));;
 			var OtherLine = CursorHeightPosition+1;
+			var OtherLineString = ds_list_find_value(output,OtherLine);
 			var OtherLineLength = string_length(ds_list_find_value(output,OtherLine));
 			var NewCursorRelativePosition;
-			if (CursorRelativePosition >= OtherLineLength) {
+			//The place of the rework
+			var CurrentLineWidth = string_width(CurrentLineString);
+			var OtherLineWidth = string_width(OtherLineString);
+			if (CurrentLineWidth >= OtherLineWidth) {
 				NewCursorRelativePosition = OtherLineLength;
+				LastWidth = string_width(OtherLineWidth);
+				LastString = OtherLineString;
 			} else {
-				NewCursorRelativePosition = CursorRelativePosition;
+				var CursorTempLoop = true;
+				var CursorTempLoopPosition = 2; //One happens to be the newline. Let's use 2 instead [UPDATE : IT WORKED =O
+				while (CursorTempLoop) {
+					var LastWidth = string_width(string_delete(OtherLineString,CursorTempLoopPosition,string_length(OtherLineString)));
+					var LastString = string_delete(OtherLineString,CursorTempLoopPosition,string_length(OtherLineString));
+					if (LastWidth >= CurrentLineWidth) {
+							NewCursorRelativePosition = CursorTempLoopPosition - 1;
+							CursorTempLoop = false;
+					} else {
+						CursorTempLoopPosition += 1;
+					}
+				}
 			}
 			//Get the specific string
-			var CombinedString = string_delete(ds_list_find_value(output,CursorHeightPosition),1,CursorRelativePosition) + string_delete(ds_list_find_value(output,OtherLine),NewCursorRelativePosition,string_length(ds_list_find_value(output,OtherLine)));
+			var CombinedString = string_delete(ds_list_find_value(output,CursorHeightPosition),1,CursorRelativePosition) + string_delete(ds_list_find_value(output,OtherLine),NewCursorRelativePosition + 1,string_length(ds_list_find_value(output,OtherLine)));
 			if (ShowUpDownDebugMessage) {
 				show_debug_message("----------------------------------------------------");
 				show_debug_message("[ATB2 Debug] CombinedString = " + CombinedString);
+				show_debug_message("[ATB2 Debug] CurrentString = " + CurrentLineString);
+				show_debug_message("[ATB2 Debug] CurrentString with cursor = " + LastString);
 				show_debug_message("[ATB2 Debug] CursorRelativePosition = " + string(CursorRelativePosition));
+				show_debug_message("[ATB2 Debug] Current String Width = " + string(CurrentLineWidth));
 				show_debug_message("[ATB2 Debug] NewCursorRelativePosition = " + string(NewCursorRelativePosition));
+				show_debug_message("[ATB2 Debug] New String Width = " + string(LastWidth));
 				show_debug_message("----------------------------------------------------");
 			}
 			CursorStringPosition += string_length(CombinedString);
@@ -142,5 +194,11 @@ cursor.y = CursorYPosition;
 	}
 }
 { //Y coordonate
-	
+	if (cursor.y < y) {
+		OriginPointY += OriginPointYMoving;
+		scr_ATB2_UpdateCursor();
+	} else if ((cursor.y + cursor.image_yscale) > (y + image_yscale)) {
+		OriginPointY -= OriginPointYMoving;
+		scr_ATB2_UpdateCursor();
+	}
 }

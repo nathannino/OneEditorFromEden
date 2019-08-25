@@ -1055,6 +1055,14 @@
             }
         },
         {
+            "Key": "c691e67a-79ae-40e2-a577-44f8238a97ae",
+            "Value": {
+                "id": "0b35ecb9-76f9-46a2-9021-c5c009f4dee0",
+                "resourcePath": "scripts\\ATB2_TextboxName_ManualChangeInput\\ATB2_TextboxName_ManualChangeInput.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "c77c6fbd-b746-435d-a5e9-4e6f99d74b35",
             "Value": {
                 "id": "a288525b-eaa0-428f-8d5f-1c8053f28457",
@@ -1435,6 +1443,7 @@
         "92638dde-3110-44b3-9f98-ce46388b9fe5",
         "b2a1ef03-8412-41a4-9a93-2abe4d32a372",
         "fe4b32ff-b882-47f9-8ae2-fbbe73935350",
+        "c691e67a-79ae-40e2-a577-44f8238a97ae",
         "3ddb6800-1aa7-4504-9574-41359fab92d1",
         "35a82e1a-c408-469c-8e2f-99b83c863797",
         "7ee55d65-1d02-41c9-82b8-122a01fc03ed",

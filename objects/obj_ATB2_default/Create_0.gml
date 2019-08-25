@@ -5,7 +5,9 @@ input = ""; //The raw text input
 LastInput = "" //Like input, but used for debug message purpuses
 //image_xscale //the witdh of the textbox
 TextboxName = "\"Unnamed textbox\"" //The name of the textbox given in the console output
-HeightPerLine = 18; //The amount of pixel to move the cursor by new lines
+UsedFont = fnt_ATB_Default; //Do note that changing used font will also require you to change stuff like :
+Cursor_image_yscale = 19; //The height of the cursor (set later in the create event)
+HeightPerLine = Cursor_image_yscale; //The amount of pixel to move the cursor by new lines
 OriginPointXMoving = 32; //random number... change this hard coded number to make it feel better
 OriginPointYMoving = HeightPerLine; //You should use a multiple of HeightPerLine if possible
 UseNewLines = true; //if enter should create a new line
@@ -15,12 +17,10 @@ KeyboardTimeoutStarted = false; //If the timeout has started or not
 DefaultKeyboardTimeout = 2; //The amount of step events after the 2nd time
 KeyboardTimeoutReset = KeyboardTimeout; //The amount to reset KeyboardTimeout to after releasing the key
 AllowDebugReset = true; //This allows the user to press F6 to reload the cursor
-UsedFont = fnt_ATB_Default; //Do note that changing used font will also require you to change stuff like :
-Cursor_image_yscale = 18; //The height of the cursor (set later in the create event)
 ShowCursorDebugCode = true; //Print some debug stuff to the console [Also, CursorStringPosition should be 1 lower than CursorRelativePosition in the first line]
 ShowUpDownDebugMessage = false; //Prints some more stuff to the console, revolving around the up and down arrow
 ShowTextUpdateMessage = false; //Prints the raw input text when input gets modified
-ShowOutputDebugMessage = true; //Prints all of output... all of it.
+ShowOutputDebugMessage = true; //Prints all of output... all of it. (It's a bit like ShowTextUpdateMessage, but seperated by lines. If you are creating a custom version of ATB2 and there is a problem with the cursor, check this instead of ShowTextUpdateMessage)
 
 //For the textbox only [That means that you could break stuff here]
 CursorXPosition = x; //The x position of the cursor
