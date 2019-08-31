@@ -5,7 +5,7 @@ input = ""; //The raw text input
 LastInput = "" //Like input, but used for debug message purpuses
 //image_xscale //the witdh of the textbox
 TextboxName = "\"Unnamed textbox\"" //The name of the textbox given in the console output
-UsedFont = fnt_ATB_Default; //Do note that changing used font will also require you to change stuff like :
+UsedFont = fnt_ATB_Default; //Please use a font you find good in any resolution your textbox will be in Do note that changing used font will also require you to change stuff like :
 Cursor_image_yscale = 19; //The height of the cursor (set later in the create event)
 HeightPerLine = Cursor_image_yscale; //The amount of pixel to move the cursor by new lines
 OriginPointXMoving = 32; //random number... change this hard coded number to make it feel better
@@ -21,6 +21,7 @@ ShowCursorDebugCode = true; //Print some debug stuff to the console [Also, Curso
 ShowUpDownDebugMessage = false; //Prints some more stuff to the console, revolving around the up and down arrow
 ShowTextUpdateMessage = false; //Prints the raw input text when input gets modified
 ShowOutputDebugMessage = true; //Prints all of output... all of it. (It's a bit like ShowTextUpdateMessage, but seperated by lines. If you are creating a custom version of ATB2 and there is a problem with the cursor, check this instead of ShowTextUpdateMessage)
+AllowDebugMessageKeys = true; //Allows to use the keyboard to toggle debug messages. Best for when you forgot to activate something and you don't want to reset
 
 //For the textbox only [That means that you could break stuff here]
 CursorXPosition = x; //The x position of the cursor

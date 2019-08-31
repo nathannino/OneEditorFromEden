@@ -44,7 +44,36 @@ if (IsSelected) {
 		scr_ATB2_KeyboardTimeoutReset();
 	} else if (keyboard_check(vk_control) && keyboard_check_pressed(ord("V"))) { //Paste what is in the pastebin
 		if (clipboard_has_text()) {
-			
+			var ClipboardToPaste = clipboard_get_text();
+			//Step 1 : Remove the \r, \f, \v and other special character we don't use
+			ClipboardToPaste = string_replace_all(ClipboardToPaste,"\r","");
+			ClipboardToPaste = string_replace_all(ClipboardToPaste,"\f","");
+			ClipboardToPaste = string_replace_all(ClipboardToPaste,"\v","");
+			if !(PasteNewLines) {
+				ClipboardToPaste = string_replace_all(ClipboardToPaste,"\n","");
+			}
+			//Step 2 : Input ftw
+			input = string_insert(ClipboardToPaste,input,CursorStringPosition + 1);
+			CursorStringPosition += string_length(ClipboardToPaste);
+			//Step 3 : Don't forget the output
+			/*
+						What to remember
+					- We need to check how many new lines we have					[CheckingText]
+					- We need to seperate each new line in a new ds_list entry		[PastingText]
+					- We need to copy back the text that was after					[RemainingText]
+			*/
+			var RemainingTextPaste = string_delete(ds_list_find_value(output,CursorHeightPosition),1,CursorRelativePosition); //Get the remaining text
+			ds_list_replace(output,CursorHeightPosition,string_delete(ds_list_find_value(output,CursorHeightPosition),CursorRelativePosition+1,string_length(ds_list_find_value(output,CursorHeightPosition)))); //Remove said remaining text from the output
+			while (string_count("\n",ClipboardToPaste)) { //while there are still \n
+				var ClipboardCurrentPasting = string_delete(ClipboardToPaste,string_pos("\n",ClipboardToPaste),string_length(ClipboardToPaste));
+				ds_list_replace(output,CursorHeightPosition,string_insert(ClipboardCurrentPasting,ds_list_find_value(output,CursorHeightPosition),CursorRelativePosition + 1));
+				ClipboardToPaste = string_delete(ClipboardToPaste,1,string_length(ClipboardCurrentPasting) + 1);
+				CursorHeightPosition += 1;
+				ds_list_insert(output,CursorHeightPosition,"\n");
+			} //When there are no n
+			ds_list_replace(output,CursorHeightPosition,ds_list_find_value(output,CursorHeightPosition) + ClipboardToPaste + RemainingTextPaste); //Add everything else
+			//Step Final
+			scr_ATB2_UpdateCursor();
 		}
 	} else if (keyboard_check(vk_left)) { //move left
 		if (scr_ATB2_KeyboardTimeoutCheck() && (CursorStringPosition != 0)) {
@@ -160,6 +189,24 @@ if (IsSelected) {
 		}
 	} else if (keyboard_check_released(vk_down)) {
 		scr_ATB2_KeyboardTimeoutReset();
+	} else if (keyboard_check(vk_control)) {
+		//Do nothing if control is pressed and there is no combinason
+		//Also, here is where you can place the debugging keybinds
+		if (AllowDebugMessageKeys) {
+			if (keyboard_check_pressed(vk_f9)) {
+				ShowCursorDebugCode = !ShowCursorDebugCode;
+				show_debug_message("[DebugMessageKey] ShowCursorDebugCode has been toggled");
+			} else if (keyboard_check_pressed(vk_f10)) {
+				ShowOutputDebugMessage = !ShowOutputDebugMessage;
+				show_debug_message("[DebugMessageKey] ShowOutputDebugMessage has been toggled");
+			} else if (keyboard_check_pressed(vk_f11)) {
+				ShowTextUpdateMessage = !ShowTextUpdateMessage;
+				show_debug_message("[DebugMessageKey] ShowTextUpdateMessage has been toggled");
+			} else if (keyboard_check_pressed(vk_f12)) {
+				ShowUpDownDebugMessage = !ShowUpDownDebugMessage;
+				show_debug_message("[DebugMessageKey] ShowUpDownDebugMessage has been toggled");
+			}
+		}
 	} else if (keyboard_lastchar != "") { //any letters
 		var CharToWrite = keyboard_lastchar;
 		CursorStringPosition += 1;
